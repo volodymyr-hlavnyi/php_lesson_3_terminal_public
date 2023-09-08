@@ -7,26 +7,18 @@ echo "===========================================".PHP_EOL;
 $array = [];
 $array2 = [];
 
-$count_max_elements = rand(5,15);
+$count_max_elements = rand(4,6);
 echo "Generate array with max items - $count_max_elements" . PHP_EOL;
 echo "===========================================".PHP_EOL;
 for ($i=0; $i <= $count_max_elements; $i++) {
-    $array[$i] = rand(-999,999);
+    $array[$i] = rand(0,20);
 }
 
 // version #1 with for
-echo "Array (with for)".PHP_EOL;
+echo "Array:".PHP_EOL;
 for ($i=0; $i <= $count_max_elements; $i++) {
     echo "array[$i]=$array[$i]".PHP_EOL;
 }
-
-// version #2 with for
-//echo "Array (with for)".PHP_EOL;
-//$count_max_elements2 = rand(20,30);
-//$array2 = array_fill(0, $count_max_elements2, rand(-999,999));
-//for ($i2=0; $i2 <= $count_max_elements2; $i2++) {
-//    echo "array2[$i2]=$array2[$i2]".PHP_EOL;
-//}
 
 echo "===========================================".PHP_EOL;
 
@@ -51,17 +43,64 @@ for ($i=0; $i <= $count_max_elements; $i++) {
 echo "Min item is $min_item".PHP_EOL;
 
 echo "===========================================".PHP_EOL;
-
-echo "===========================================".PHP_EOL;
-
-echo "Found MIN items in array[$count_max_elements]" . PHP_EOL;
-$min_item = $array[0];
+echo "SORT Function".PHP_EOL;
+sort($array).PHP_EOL;
 for ($i=0; $i <= $count_max_elements; $i++) {
-    if ($array[$i] < $min_item) {
-        $min_item = $array[$i];
+    echo "array[$i]=$array[$i], ";
+    if ($i === $count_max_elements) {
+        echo " " . PHP_EOL;
     }
 }
-echo "Min item is $min_item".PHP_EOL;
+echo "===========================================".PHP_EOL;
+echo "RSORT Function".PHP_EOL;
+rsort($array).PHP_EOL;
+for ($i=0; $i <= $count_max_elements; $i++) {
+    echo "array[$i]=$array[$i], ";
+    if ($i === $count_max_elements) {
+        echo " " . PHP_EOL;
+    }
+}
 
 echo "===========================================".PHP_EOL;
+echo "Sorting ACS (bubble method) items in array[$count_max_elements]" . PHP_EOL;
+for ($k=0; $k <= $count_max_elements; $k++) {
+    //$item = $array[$k];
+    //$position = $k;
+    for ($i=0; $i <= $count_max_elements-1-$k; $i++) {
+        if ($array[$i] > $array[$i+1]) {
+            $tmp_item = $array[$i+1];
+            $array[$i+1] = $array[$i];
+            $array[$i] = $tmp_item;
+        }
+    }
+}
 
+//echo "Sorting ACS Array:".PHP_EOL;
+for ($i=0; $i <= $count_max_elements; $i++) {
+    echo "array[$i]=$array[$i], ";
+    if ($i === $count_max_elements) {
+        echo " " . PHP_EOL;
+    }
+}
+
+echo "===========================================".PHP_EOL;
+echo "Sorting DESC (bubble method) items in array[$count_max_elements]" . PHP_EOL;
+for ($k=0; $k <= $count_max_elements; $k++) {
+    //$item = $array[$k];
+    //$position = $k;
+    for ($i=0; $i <= $count_max_elements-1-$k; $i++) {
+        if ($array[$i] < $array[$i+1]) {
+            $tmp_item = $array[$i+1];
+            $array[$i+1] = $array[$i];
+            $array[$i] = $tmp_item;
+        }
+    }
+}
+
+//echo "Sorting DESC Array:".PHP_EOL;
+for ($i=0; $i <= $count_max_elements; $i++) {
+    echo "array[$i]=$array[$i], ";
+    if ($i === $count_max_elements) {
+        echo " " . PHP_EOL;
+    }
+}
